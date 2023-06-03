@@ -1,8 +1,0 @@
-I have a project containing multiple other projects :
-
-Main project
-Mini project 1
-Mini project 2
-All containing node_modules folder. I want git to ignore the folder no matter where it is starting from the root folder. Something like this to add in .gitignore :
-
-*node_modules/*
