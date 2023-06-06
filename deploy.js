@@ -7,7 +7,16 @@ async function main() {
   const provider = new ethers.providers.JsonRpcProvider(
     process.env.PROVIDER_URL
   );
-  const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
+  // const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
+
+  const encryptedJsonKey = fs.readFileSync("encryptedKey.json", "utf8");
+
+  let wallet = new ethers.Wallet.fromEncryptedJsonSync(
+    encryptedJsonKey,
+    process.env.PRIVATE_KEY_PASSWORD
+  );
+
+  wallet = await wallet.connect(provider);
 
   const abi = fs.readFileSync("./SimpleStorage_sol_SimpleStorage.abi", "utf8");
   const binary = fs.readFileSync(
