@@ -3,7 +3,7 @@ pragma solidity 0.8.7; // Set version.
 
 contract SimpleStorage {
     // bool hasFavoriteNumber = true;
-    uint public favoriteNumber = 123;
+    uint public favoriteNumber;
 
     // Mapping, (hash table)
     mapping(string => uint) public nameToFavoriteNumber;
